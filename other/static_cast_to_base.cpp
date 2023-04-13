@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdint>
 
 class Base1 {
     public:
@@ -38,18 +39,18 @@ int main() {
     Derived d(1, 2, 3, 4);
     Base1& b1 = static_cast<Base1&>(d);
     Base2& b2 = static_cast<Base2&>(d);
+    std::cout << &d << "\n";
+    std::cout << &b1 << "\n"; // same as &d
+    std::cout << &b2 << "\n"; 
+    std::cout << sizeof(Base1) << "\n";
+    std::cout << sizeof(Base2) << "\n";
+    std::cout << sizeof(Derived) << "\n";
 
-    Base1 *bp1 = &d;
-    Base2 *bp2 = &d;
+    std::cout << (reinterpret_cast<std::uintptr_t>(&b2) -reinterpret_cast<std::uintptr_t>(&b1)) << "\n";
+
+    Base1 bb1 = static_cast<Base1>(d);
+    Base2 bb2 = static_cast<Base2>(d);
 
     return 0;
 
-// The ouput definitely requires further investigation:
-
-// Creating Base1 with 1 and 2
-// Creating Base2 with 3 and 4
-// Creating Derived with 1,2 and 3, 4
-// Removing Derived with 1,2 and 3, 4
-// Removing Base2 with 3 and 4
-// Removing Base1 with 1 and 2
 }
