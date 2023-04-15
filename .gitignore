@@ -1,5 +1,7 @@
 build/
 *.out
 *.o
+*.gimple
+*.class
 
 .vscode/
