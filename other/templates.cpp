@@ -12,7 +12,7 @@ template void Voice<>(char);
 int main() {
     
     int a = 1;
-    double b = 2.0
+    double b = 2.0;
     PrintExpression(a*b + 1);
 
     Voice(1);

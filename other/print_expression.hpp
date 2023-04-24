@@ -1,4 +1,4 @@
 #include <iostream>
 
-#define PrintExpression(Expression); std::cout << "{"<< #Expression << "}: " << (Expression) << std::endl;
+#define PrintExpression(Expression) std::cout << "{"<< #Expression << "}: " << (Expression) << std::endl;
 
