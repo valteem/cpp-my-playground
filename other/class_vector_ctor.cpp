@@ -12,7 +12,7 @@ class A {
 
 int main() {
 
-    std::vector<int> w = {1, 3, 7, 11, 87};
+    std::vector<int> w {1, 3, 7, 11, 87}; // w = {...} before C++11, w {...} since C++11
     A a(w);
 
     for (size_t i = 0, e = w.size(); i < e; i++) {
