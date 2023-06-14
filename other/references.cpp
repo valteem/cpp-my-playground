@@ -12,7 +12,8 @@ int main() {
     int* p = &r; // what is this if not pointer to reference?
     std::cout << &r << " " << p << " " << *p << std::endl;
 
-    *p++;
+//  *p++ increases address that pointer point to, not the value stored at this address    
+    (*p)++;
     std::cout << &r << " " << p << " " << *p << std::endl;
 
 }
