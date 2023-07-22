@@ -18,3 +18,8 @@ build/message.o: src/message.cpp
 build/main: build/main.o build/message.o
 	cd build && \
 	g++ $(OBJFILES) -o main
+
+.PHONY: sub
+
+sub:
+	$(MAKE) -f sub.mk
