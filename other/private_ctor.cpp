@@ -1,5 +1,6 @@
 #include <cmath> // std::cos(), std::sin()
 #include <iostream>
+#include <tuple>
 #include <utility>
 
 // https://www.geeksforgeeks.org/can-constructor-private-cpp/
@@ -59,6 +60,12 @@ int main() {
     std::cout << p1.Coord().first << " " << p1.Coord().second << std::endl;
     auto p2 = Point::Polar(1, 1);
     std::cout << p2.Coord().first << " " << p2.Coord().second << std::endl;
+
+    double u, v;
+    std::tie(u, v) = p1.Coord(); // https://stackoverflow.com/a/15365938
+    std::cout << u << "," << v << std::endl;
+    auto[wx, wy] = p2.Coord(); // C++17 structured binding
+    std::cout << wx << "," << wy << std::endl;
     
     return 0;
 
