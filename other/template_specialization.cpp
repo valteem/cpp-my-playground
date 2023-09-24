@@ -1,0 +1,1 @@
+// https://github.com/boostorg/algorithm/blob/32c5a6327cfdca5d41ce0f1d8849b811886daa2f/include/boost/algorithm/searching/detail/bm_traits.hpp#L36
