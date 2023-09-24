@@ -1,0 +1,1 @@
+// https://www.tomdalling.com/blog/software-design/resource-acquisition-is-initialisation-raii-explained/
