@@ -3,5 +3,7 @@ build/
 *.o
 *.gimple
 *.class
+_tmp*.*
+_tmp*
 
 .vscode/
