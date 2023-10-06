@@ -35,10 +35,12 @@ class Point {
     double x_, y_; // Data members of classes, both static and non-static, are named like ordinary nonmember variables, but with a trailing underscore 
 };
 
+// reason to inline c'tor function: https://stackoverflow.com/a/44247740 ...
 inline std::pair<double, double> Point::Coord() {
     return std::make_pair(x_, y_);
 }
 
+// ... as well as any other function
 inline Point::Point(double x, double y): x_(x), y_(y) {};
 
 inline Point Point::Cartesian(double x, double y) {
