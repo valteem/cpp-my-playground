@@ -9,6 +9,8 @@ enable_testing()
 add_subdirectory(googletest)
 include_directories(googletest/include)
 
+add_executable(testing)
+
 #---------------------------------------------------------------------------------
 # Package files
 #---------------------------------------------------------------------------------
@@ -19,8 +21,9 @@ include_directories($(PROJECT_SOURCE_DIR)/include)
 # Test files
 #---------------------------------------------------------------------------------
 add_subdirectory(tests)
-add_executable(add_test src/add.cc tests/add_test.cc)
-target_link_libraries(add_test GTest::gtest_main)
+# add_executable(tests src/add.cc tests/add_test.cc)
+
+target_link_libraries(testing GTest::gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(add_test)
+gtest_discover_tests(testing)
