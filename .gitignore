@@ -7,3 +7,5 @@ _tmp*.*
 _tmp*
 
 .vscode/
+
+googletest/
