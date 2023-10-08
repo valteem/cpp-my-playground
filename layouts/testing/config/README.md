@@ -1,1 +1,1 @@
-Examples of VS Code confuguaration files for running and debugging tests
+Examples of VS Code configuration files for running and debugging tests
