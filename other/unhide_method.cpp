@@ -2,25 +2,40 @@
 
 #include <iostream>
 
-class Base {
+struct P {
+    int i;
+    P(int i): i(i) {};
+};
+
+class A {
     public:
-    void announce(int i) {
-        std::cout << i << std::endl;
+    void announce(P p) {
+        std::cout << p.i << std::endl;
     }
-        void announce(std::string s) {
-        std::cout << s << std::endl;
+    void announce(std::string s) {
+    std::cout << s << std::endl;
     }
 };
 
-class Derive : public Base {
+class B : public A {
     public:
-    using Base::announce;
+    using A::announce;
+    void announce(double d) {
+        std::cout << d << std::endl;
+    }
 };
 
 int main() {
-    Derive d;
-    d.announce(1);
-    d.announce("hi");
+
+    B b;
+    P p(1);
+    // This works for double arguments because announce() is overloaded for B
+    b.announce(1.0);
+    // This works only when 'using A::annouce' is present in definition of B
+    b.announce(p);
+    std::string s("str");
+    b.announce(s);
 
     return 0;
+    
 }
