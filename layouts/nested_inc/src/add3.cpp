@@ -1,0 +1,1 @@
+int add3(int i, int j, int k) {return (i + j + k);}

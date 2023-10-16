@@ -1,6 +1,10 @@
-#include "nested/nested.h"
-// #include "./nested/nested.h" also works
+#include <iostream>
+
+#include "nested/add2.h"
+#include "./nested/add3.h"
 
 int main(){
-    announce(1);
+    std::cout << add2(1, 1) << std::endl;
+    std::cout << add3(1, 1, 1) << std::endl;
+    return 0;    
 }
