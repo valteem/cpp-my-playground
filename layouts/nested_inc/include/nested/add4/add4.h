@@ -1,0 +1,6 @@
+#ifndef NESTED_INCLUDE_VARIADIC_ADD4
+#define NESTED_INCLUDE_VARIADIC_ADD4
+
+int add4(int i, int j, int k, int l);
+
+#endif // NESTED_INCLUDE_VARIADIC_ADD_VAR
