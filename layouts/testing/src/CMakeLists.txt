@@ -1,1 +1,1 @@
-target_sources(testing PRIVATE add.cc cconfig.cc)
+target_sources(testing PRIVATE add.cc base.cc cconfig.cc)

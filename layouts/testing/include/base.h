@@ -4,10 +4,14 @@
 
 class Transform {
     public:
-    const class Element *e;
+    class Element *e;
+    Transform(int dim);
 };
 
 class Element {
-    protected:
+    private:
     int dim;
+    public:
+    void set_dim(int dim); 
+    int get_dim();
 };
