@@ -1,6 +1,5 @@
 #ifndef BASE_H
 #define BASE_H
-#endif // BASE_H
 
 class Transform {
     public:
@@ -15,3 +14,5 @@ class Element {
     void set_dim(int dim); 
     int get_dim();
 };
+
+#endif // BASE_H

@@ -1,6 +1,5 @@
 #ifndef BASE_H
 #define BASE_H
-#endif // BASE_H
 
 #include <string>
 
@@ -13,3 +12,5 @@ class Base {
     std::string Foo();
     std::string Foo() const; // https://stackoverflow.com/a/751783
 };
+
+#endif // BASE_H
