@@ -10,8 +10,8 @@ namespace usingIntro {
         EXPECT_EQ(b->y, 2);
     };
 
-    TEST(using_intro, ctor) {
-        B b {1, 2}; // using curly braces is only allowed if c'tor has initialization list
+    TEST(using_intro, aggr_init) {
+        B b {1, 2}; // aggregate initialization
         EXPECT_EQ(b.x, 1);
         EXPECT_EQ(b.y, 2);
     }
