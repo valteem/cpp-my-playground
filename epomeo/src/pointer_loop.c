@@ -5,4 +5,4 @@ int main() {
     for (char **p = list; *p != NULL; p++) {
         printf("%s\n", p[0]);
     }
-}
+}   
