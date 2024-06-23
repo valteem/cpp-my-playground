@@ -16,4 +16,9 @@ int main() {
     (*p)++;
     std::cout << &r << " " << p << " " << *p << std::endl;
 
+    int var = 1;
+    int& ref_to_var = var;
+    int another_var = 2;
+    ref_to_var = another_var;
+    std::cout << var << " " << another_var << std::endl;
 }
