@@ -21,4 +21,11 @@ int main() {
     int another_var = 2;
     ref_to_var = another_var;
     std::cout << var << " " << another_var << std::endl;
+
+    int var_ = 1;
+    int* pointer_to_var_ = &var_;
+    int another_var_ = 2;
+    // pointer_to_var_ = another_var_; // cannot be assigned
+    *pointer_to_var_ = another_var_;
+    std::cout << var_ << " " << another_var_ << std::endl;
 }
