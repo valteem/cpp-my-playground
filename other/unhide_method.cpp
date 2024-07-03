@@ -1,40 +1,43 @@
 // https://gitlab.com/libeigen/eigen/-/blame/master/Eigen/src/Core/Array.h?ref_type=heads#L65
 
-#include <iostream>
+#include <cassert>
 
-struct P {
-    int i;
-    P(int i): i(i) {};
-};
-
-class A {
+// Simple case:
+// derived class implicitly inherits method(s) of its base class
+class M1 {
     public:
-    void announce(P p) {
-        std::cout << p.i << std::endl;
-    }
-    void announce(std::string s) {
-    std::cout << s << std::endl;
-    }
+    int Output(int i) {return i;} 
 };
+class N1 :public M1 {};
+void UseBaseClassMethodsImplicit() {    
+    N1 n;
+    int i{1};
+    assert(n.Output(i) == i);
+}
 
-class B : public A {
+// More complicated:
+// derived class has method of the same name but with different signature
+class M2 {
     public:
-    using A::announce;
-    void announce(double d) {
-        std::cout << d << std::endl;
-    }
+    int Output(int i) {return i;} 
 };
+class N2 :public M2 {
+    public:
+    using M2::Output; // needed to call Output(int) (not Output(int, int)) on N2 objects
+    int Output(int i, int j) {return i + j;}
+};
+void UseBaseClassMethodsExplicit() {    
+    N2 n;
+    int i{1};
+    int j{1};
+    assert(n.Output(i, j) == (i + j)); // this works anyway - derived and base class Output() signatures are different
+    assert(n.Output(i) == i); // this only works with `using M2::Output` in the definition of N2
+}  
 
 int main() {
 
-    B b;
-    P p(1);
-    // This works for double arguments because announce() is overloaded for B
-    b.announce(1.0);
-    // This works only when 'using A::annouce' is present in definition of B
-    b.announce(p);
-    std::string s("str");
-    b.announce(s);
+    UseBaseClassMethodsImplicit();
+    UseBaseClassMethodsExplicit();
 
     return 0;
     
