@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cstdio>
 #include <iostream>
+#include <vector>
 
     template <typename F, typename T>
     void Transform(F f, T input[], size_t length, T output[]) {
@@ -51,6 +52,18 @@ int main() {
         auto output = [](int x, int y = 10) { return x + y;};
         assert(output(1) == 11);
         assert(output(1, 2) == 3);
+    }
+
+    // Initializer expression
+    {
+        size_t count {0};
+        auto output = [&my_counter = count](const std::vector<size_t> v) {
+            for(const auto& value: v) {
+                my_counter += value;
+            }
+            return my_counter;
+        };
+        assert(output(std::vector<size_t>{1, 2, 3, 4 }) == 10);
     }
 
     return 0;
