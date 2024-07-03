@@ -3,20 +3,40 @@
 #include <iostream>
 #include <vector>
 
-    template <typename F, typename T>
-    void Transform(F f, T input[], size_t length, T output[]) {
-        for (size_t i{}; i < length; i++) {
-            output[i] = f(input[i]);
-        }
+template <typename F, typename T>
+void Transform(F f, T input[], size_t length, T output[]) {
+    for (size_t i{}; i < length; i++) {
+        output[i] = f(input[i]);
     }
+}
 
-    template <typename T>
-    void PrintArray(T arr[], size_t length) {
-        for (size_t i{}; i < length; i++) {
-            std::cout << arr[i] << " ";
-        }
-        std::cout << std::endl;
+template <typename T>
+void PrintArray(T arr[], size_t length) {
+    for (size_t i{}; i < length; i++) {
+        std::cout << arr[i] << " ";
     }
+    std::cout << std::endl;
+}
+
+class CounterFactory {
+    public:
+    CounterFactory(size_t lower, size_t upper): lower_(lower), upper_(upper) {};
+    auto MakeCounter() {
+        return [this](std::vector<size_t> v) {
+            size_t count {0};
+            for(const auto& value: v) {
+                if((value >= lower_) && (value <= upper_)) {
+                    count++;
+                }
+            } 
+            return count;
+        };
+    };
+
+    private:
+    size_t upper_;
+    size_t lower_;
+};
 
 
 int main() {
@@ -57,13 +77,21 @@ int main() {
     // Initializer expression
     {
         size_t count {0};
-        auto output = [&my_counter = count](const std::vector<size_t> v) {
+        auto output = [my_counter = count](const std::vector<size_t> v) mutable {
             for(const auto& value: v) {
                 my_counter += value;
             }
             return my_counter;
         };
         assert(output(std::vector<size_t>{1, 2, 3, 4 }) == 10);
+    }
+
+    // Capturing `this`
+    {
+        CounterFactory cf {5, 15};
+        auto counter = cf.MakeCounter();
+
+        assert(counter(std::vector<size_t>{1, 3, 5, 7, 11, 14, 16, 17}) == 4);
     }
 
     return 0;
