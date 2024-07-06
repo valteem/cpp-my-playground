@@ -4,8 +4,8 @@ project(plain_test)
 
 enable_testing()
 
-include_directories($(PROJECT_SOURCE_DIR)/include)
+include_directories($(PROJECT_SOURCE_DIR)/include) # parentheses ...
 
-add_executable(rtest test/run_test.cc src/base.cc)
+SET(SOURCEFILES ${PROJECT_SOURCE_DIR}/src/base.cc) # ... vs curly brackets
 
-add_test(NAME rtest COMMAND rtest)
+add_subdirectory(test)
