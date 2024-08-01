@@ -1,0 +1,1 @@
+add_executable(app2 app2.cc)
