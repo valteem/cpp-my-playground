@@ -13,9 +13,9 @@ class Point {
 
 class A {
     public:
-    A() {};
-    A(int) {};
-    A(int, int) {};
+    A() {std::cout << "initialization - no input" << std::endl;};
+    A(int) {{std::cout << "copy initialization" << std::endl;}};
+    A(int, int) {std::cout << "copy initialization - two input params" << std::endl;};
 };
 
 int main() {
@@ -27,9 +27,10 @@ int main() {
 
 // https://en.cppreference.com/w/cpp/language/converting_constructor
 // Need more elaboration on this
+    A a0; 
     A a1 = 1;
     A a2{1};
     A a3{1, 2};
 
-    [](...){}(a1, a2, a3);
+    [](...){}(a0, a1, a2, a3);
 }
