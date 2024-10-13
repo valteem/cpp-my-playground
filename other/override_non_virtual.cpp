@@ -1,44 +1,38 @@
-#include <iostream>
+#include <cassert>
 
-class Base {
+class A {
     public:
-    void Show() {
-        std::cout << "Non-virtual Base" << std::endl;
-    };
-    virtual void vShow() {
-        std::cout << "Virtual Base" << std::endl;
-    };
+    int Value() {return 1;}
+    virtual int viValue() {return 2;}
 };
 
-class Derived : public Base {
+class B : public A {
     public:
-    void Show() {
-        std::cout << "Show - Derived" << std::endl;
-    };
-    void vShow() {
-    std::cout << "vShow - Derived" << std::endl;
-    };
+    int Value() {return 101;}
+    int viValue() override {return 102;};
 };
 
 int main() {
-    Base b;
-    Derived d;
+    A base;
+    B derived;
 
-    Base *pb = &b;
-    Derived *pd = &d;
-    Base *ps = &d; // some kind of casting?
+    A *pointer_to_base = &base;
+    B *pointer_to_derived = &derived;
+    A *pointer_to_derived_cast_to_base = &derived; // some kind of casting?
 
-    b.Show();
-    b.vShow();
-    d.Show();
-    d.vShow();
+    assert(base.Value() == 1);
+    assert(base.viValue() == 2);
+    assert(derived.Value() == 101);
+    assert(derived.viValue() == 102);
 
-    pb->Show();
-    pb->vShow();
-    pd->Show();
-    pd->vShow();
-    ps->Show();
-    ps->vShow();
+    assert(pointer_to_base->Value() == 1);
+    assert(pointer_to_base->viValue() == 2);
+    assert(pointer_to_derived->Value() == 101);
+    assert(pointer_to_derived->viValue() == 102);
+    // non-virtual - invokes base class function
+    assert(pointer_to_derived_cast_to_base->Value() == 1);  
+    // virtual - invokes derived class function despite 'casting' to base class pointer
+    assert(pointer_to_derived_cast_to_base->viValue() == 102); 
 
     return 0;
 
