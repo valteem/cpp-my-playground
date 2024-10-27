@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 class Base {
     public:
@@ -11,6 +12,7 @@ class Base {
         std::cout << "Removing Base with " << a << " and " << b << "\n";
     };
 };
+
 class Derived : public Base {
     public:
     Derived(int m, int n) : Base(m, n) {
@@ -22,8 +24,17 @@ class Derived : public Base {
 };
 
 int main() {
+
+    std::cout << "Initializing Derived object ...\n";
     Derived d(1, 2);
+
+    std::cout << "Initializing another Derived object ...\n";
+    Derived a(3, 4);
+
+    std::cout << "Initializing Base object ...\n";
     Base b = static_cast<Base>(d);
+
     std::cout << "Destroying objects ...\n";
+
     return 0;
 }
