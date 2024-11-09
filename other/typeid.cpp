@@ -34,7 +34,12 @@ int main(int argc, char* argv[]) {
 // dynamic_cast is used when you want to test whether a pointer to a base class object
 // actually points to a subclass or not. If it is a subclass object, the dynamic_cast
 // will give you a valid pointer, and if it is not, you just get a nullptr
-    assert(downcast_ptr==nullptr);
+    assert(downcast_ptr == nullptr);
+
+    B* up_and_down_cast_ptr = dynamic_cast<B*>(upcast_ptr);
+    assert(up_and_down_cast_ptr != nullptr);
+    assert(up_and_down_cast_ptr->count == 2); //B(2)
+    assert(up_and_down_cast_ptr->flag == true);
     
     typeName(a);
     typeName(b);
