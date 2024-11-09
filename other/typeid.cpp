@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 
 struct A {
@@ -28,6 +29,12 @@ int main(int argc, char* argv[]) {
     A* upcast_ptr = bp;
 //  B* downcast_ptr = ap;
     B* downcast_ptr = dynamic_cast<B*>(ap); // operand must be polymorphic
+
+// https://stackoverflow.com/a/37187465
+// dynamic_cast is used when you want to test whether a pointer to a base class object
+// actually points to a subclass or not. If it is a subclass object, the dynamic_cast
+// will give you a valid pointer, and if it is not, you just get a nullptr
+    assert(downcast_ptr==nullptr);
     
     typeName(a);
     typeName(b);
