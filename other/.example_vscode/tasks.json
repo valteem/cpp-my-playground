@@ -7,7 +7,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "-O3",
+                "-O",
+                "-fno-elide-constructors",
                 "${file}",
                 "-o",
                 "a.out"
