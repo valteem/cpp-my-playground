@@ -7,9 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-O3",
                 "${file}",
                 "-o",
-                "a.out",
+                "a.out"
             ],
             "options": {
                 "cwd": "${fileDirname}"
