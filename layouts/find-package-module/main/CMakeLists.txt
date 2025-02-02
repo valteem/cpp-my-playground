@@ -13,3 +13,5 @@ find_package(support REQUIRED)
 add_executable(main_exec main.cc)
 
 target_include_directories(main_exec PRIVATE ${support_INCLUDE_DIR})
+
+target_link_libraries(main_exec ${support_LIB})
