@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cassert>
 
 class A {
     public:
@@ -24,6 +24,8 @@ int main() {
     C* c = new C;
     /* std::cout << c->getValue() <<  std::endl; */ // does not compile: getValue() is ambiguous
     X* x = new X;
-    std::cout << x->getValue() <<  std::endl;
+    assert(x->getValue()==1);
     return 0;
 }
+
+//  g++ -fdump-lang-class=mult_inh_same.txt mult_inh_same.cpp

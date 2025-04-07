@@ -1,0 +1,24 @@
+Class A
+   size=1 align=1
+   base size=0 base align=1
+A (0x0x6fff2bb69840) 0 empty
+
+Class B
+   size=1 align=1
+   base size=0 base align=1
+B (0x0x6fff2bb69900) 0 empty
+
+Class C
+   size=1 align=1
+   base size=1 base align=1
+C (0x0x6fff2bba70e0) 0 empty
+A (0x0x6fff2bb699c0) 0 empty
+B (0x0x6fff2bb69a20) 0 empty
+
+Class X
+   size=1 align=1
+   base size=1 base align=1
+X (0x0x6fff2bba71c0) 0 empty
+A (0x0x6fff2bb69ae0) 0 empty
+B (0x0x6fff2bb69b40) 0 empty
+

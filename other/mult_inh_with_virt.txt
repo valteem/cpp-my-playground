@@ -1,0 +1,44 @@
+Vtable for A
+A::_ZTV1A: 3 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI1A)
+16    (int (*)(...))A::MethodA
+
+Class A
+   size=8 align=8
+   base size=8 base align=8
+A (0x0x7c050ab69420) 0 nearly-empty
+    vptr=((& A::_ZTV1A) + 16)
+
+Vtable for B
+B::_ZTV1B: 3 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI1B)
+16    (int (*)(...))B::MethodB
+
+Class B
+   size=8 align=8
+   base size=8 base align=8
+B (0x0x7c050ab695a0) 0 nearly-empty
+    vptr=((& B::_ZTV1B) + 16)
+
+Vtable for X
+X::_ZTV1X: 7 entries
+0     (int (*)(...))0
+8     (int (*)(...))(& _ZTI1X)
+16    (int (*)(...))X::MethodA
+24    (int (*)(...))X::MethodB
+32    (int (*)(...))-8
+40    (int (*)(...))(& _ZTI1X)
+48    (int (*)(...))X::_ZThn8_N1X7MethodBEv
+
+Class X
+   size=16 align=8
+   base size=16 base align=8
+X (0x0x7c050ab7a0e0) 0
+    vptr=((& X::_ZTV1X) + 16)
+A (0x0x7c050ab69660) 0 nearly-empty
+      primary-for X (0x0x7c050ab7a0e0)
+B (0x0x7c050ab696c0) 8 nearly-empty
+      vptr=((& X::_ZTV1X) + 48)
+
