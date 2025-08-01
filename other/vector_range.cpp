@@ -7,8 +7,7 @@ struct Food {
     bool expired;
 };
 
-int main(int argc, char* argv[]) {
-
+void RangeByRef() {
     std::vector<Food> food_items = {
         {"apples", false},
         {"cherries", false},
@@ -22,6 +21,31 @@ int main(int argc, char* argv[]) {
     for (const Food& f: food_items) {
         assert(f.expired == true);
     };
+
+}
+
+void RangeByValue() {
+    std::vector<Food> food_items = {
+        {"apples", false},
+        {"cherries", false},
+        {"onions", false}
+    };
+
+    for (Food f: food_items) {
+        f.expired = true;
+    };
+
+    for (const Food& f: food_items) {
+        assert(f.expired == false);
+    };
+    
+}
+
+int main(int argc, char* argv[]) {
+
+    RangeByRef();
+
+    RangeByValue();
 
     return 0;
     
